@@ -1,0 +1,724 @@
+
+\documentclass[10pt, reqno]{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[english,russian]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage[hidelinks,unicode]{hyperref}
+\usepackage{indentfirst}
+\usepackage{anyfontsize}
+\usepackage{dsfont}
+\usepackage{relsize}
+
+
+\def\udcs{519.233} %Here the author places classificators of the paper according to Russian classification system
+\def\mscs{62F03} %Here the author places  classificators according to the AMS classification list.
+\setcounter{page}{1}
+
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{repeated_theorem}{Theorem}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{repeated_corollary}{Corollary}
+\newtheorem*{remark*}{Remark}
+\newtheorem{repeated_remark}{Remark}
+\newtheorem{lemma}{Лемма}
+
+\newcommand{\pee}{A} % path exists event
+\newcommand{\aps}{\Pi} % all pathes set
+\newcommand{\app}{\pi} % any particular path
+\newcommand{\pps}{K} % pathes projections set
+\newcommand{\lgc}{F} % linear growth coefficient
+\newcommand{\cte}{c} % constant to estimate
+\newcommand{\sas}{\mathcal{F}}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\newcommand{\aasVar}{Q} % any accessible set
+\newcommand{\asaVar}{\mathfrak{B}} % any sigma-algebra
+\newcommand{\astVar}{\tau} % any stopping time
+\newcommand{\gtfVar}{G} % G theorem function
+\newcommand{\wtfVar}{W} % W theorem function
+\newcommand{\atoVar}{\mathbf{A}} % A theorem operator
+\newcommand{\dooVar}{\mathbb{D}} % domain of operator (A)
+\newcommand{\ltfVar}{L} % Lyapunov test function
+\newcommand{\DeltaVar}{\Delta} % Lyapunov test function
+\newcommand{\assVar}{\mathfrak{X}} % Lyapunov test function
+\newcommand{\integers}{\mathbb{Z}} % Lyapunov test function
+% \newcommand{\positive_integers}{\mathbb{N}} % Lyapunov test function
+\newcommand{\reals}{\mathbb{R}} % Lyapunov test function
+\newcommand{\akdVar}{\mathbf{D}_{\atoVar}} % A Kalashnikov's domain
+\newcommand{\gdfVar}{f} % G derivative function
+
+\makeatletter
+\newcommand*{\inlineequation}[3][]{%
+	\begingroup
+	% Put \refstepcounter at the beginning, because
+	% package `hyperref' sets the anchor here.
+	\refstepcounter{equation}%
+	\ifx\\#1\\%
+	\else
+	\label{#1}%
+	\tag{#2}
+	\fi
+	% prevent line breaks inside equation
+	\relpenalty=10000 %
+	\binoppenalty=10000 %
+	\ensuremath{%
+		% \displaystyle % larger fractions, ...
+		#3%
+	}%
+	~\@eqnnum
+	\endgroup
+}
+\makeatother
+
+\usepackage{hyperref}
+
+% \setmathfont{DejaVu Sans}
+% DejaVu Sans: $\mathbb{\Gamma\gamma\Pi\pi\sum}$
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\absolute}[1]{\left|#1\right|}
+
+\newcommand{\bbone}{\usefont{T2A}{bbold}{m}{n}\Pi}
+\MakeRobust{\bbone}
+
+\newcommand{\cgy}[6]{
+	\text{П}\arraycolsep=1.4pt\def\arraystretch{0.87}
+	\scriptsize
+	\begin{array}{ccc}
+		#2 & #4 & #6\\
+		#1 & #3 & #5
+	\end{array}
+	\normalsize
+}
+
+\newcommand{\stcomp}[1]{\overline{#1}}
+
+\DeclareUnicodeCharacter{2212}{-}
+\DeclareMathOperator*{\E}{\mathbb{E}}
+\DeclareMathOperator*{\Pb}{\mathbb{P}}
+
+\def\logo{{\bf\huge S\raisebox{0.2ex}{\hspace{0.55ex}\raisebox{0.05ex}e\hspace{-1.65ex}$\bigcirc$}MR}}
+
+\makeatletter
+\def\@settitle{
+	\begin{center}%
+		\baselineskip14\p@\relax
+		\bfseries
+		\large
+		\@title
+	\end{center}%
+}
+\makeatother
+
+\makeatletter
+\newcommand{\leqnomode}{\tagsleft@true\let\veqno\@@leqno}
+%\newcommand{\reqnomode}{\tagsleft@false\let\veqno\@@eqno}
+\makeatother
+
+% \def\semrtop
+%      {
+%   \vbox{
+%      \noindent\logo
+%      \hspace{80mm}\raisebox{1ex}{ISSN 1813-3304 }
+
+%      \vspace{5mm}
+
+%      \begin{center}
+%      {\huge Journal} \\[2mm] 
+%      {\large Journal} \\[1mm]
+%      {\LARGE\tt{http://semr.math.nsc.ru}}\\[0.5mm]
+% %     {\small 3 3 3 3 3}\\[-1mm]
+% %     {\small Sobolev Institute of Mathematics SB RAS}
+%      \end{center}
+%      \vspace{-3mm}
+%      \noindent
+%      \begin{tabular}{c}
+%      \hphantom{aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa} \\
+%      \hline\hline
+%      \end{tabular}
+
+%      \vspace{1mm}
+%      {\flushleft\it Том 16, стр. 144--144 (2019) \hspace{65mm}{\rm\small УДК \udcs}} %Volume, pages in Russian,
+%                                                                                     %filled by Editorial board
+%      \newline
+%          {\rm\small DOI~10.33048/semi.2019.16.xxx}\hphantom{aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}{\rm\small MSC\ \ \mscs }
+%   }%\vbox
+% }
+
+\newcommand\myshorttitle{\small\textsc{Multistep generalisation of G-recurrency theorem}}
+\begin{titlepage}
+	\title[\myshorttitle]{Multistep generalisation of G-recurrency theorem}
+	\author{{Chebunin M.G., Rezler A.V}}%
+	
+	\email{rezlers123@gmail.com}%
+	\address{Mikhail Georgievich Chebunin
+		\newline\hphantom{iii} Karlsruhe Institute of Technology,
+		\newline\hphantom{iii} Institute of Stochastics,
+		\newline\hphantom{iii} Karlsruhe, 76131, Germany.}%
+	
+	\email{chebuninmikhail@gmail.com}%
+	
+	\address{Alexandr Vadimovich Rezler
+		\newline\hphantom{iii} Novosibirsk State University
+		\newline\hphantom{iii} 2, Pirogova str.}%
+	
+	
+	
+	\thanks{\sc A. Rezler, M. Chebunin,
+		Multistep generalisation of G-recurrency theorem}
+	\thanks{\copyright \ 2023 Chebunin M.G., Rezler A.V}
+\end{titlepage}
+\begin{document}
+	\renewcommand{\refname}{References}
+	\renewcommand{\proofname}{Proof.}
+	\renewcommand{\figurename}{Fig.}
+	\thispagestyle{empty}
+	
+	
+	% \semrtop \vspace{1cm}
+	\maketitle {\small
+		\begin{quote}
+			\noindent{\sc Abstract.} 
+			Among the various approaches of proving the ergodicity of a Markov chain, a fairly common method is based on the Foster criterion, during which it is necessary to construct a test function whose drift in one step of the chain satisfies certain properties. In the work of S.G. Foss and T. Konstantopoulos the generalization of the Foster criterion was proposed. It allows one to obtain the same results if the test function satisfies similar properties in some arbitrary number of steps. V.V. Kalashnikov, in his book “Mathematical methods in queuing theory”, studied Foster’s one-step criterion under more general conditions on the test function, which made it possible to obtain more general results. The goal of the paper is to generalise its results to the multi-step case.
+			
+			\medskip
+			
+			\noindent{\bf Keywords:} Markov chains, ergodicity, generalised Foster criterion, G-recurrency.
+		\end{quote}
+	}
+	
+	\section{V.V. Kalashnikov}
+	Let $\aasVar \in \asaVar$, $\astVar_{\aasVar} = \min{n : n > 0, X_{n} \in \aasVar}$, and $\gtfVar(n) \geq 0$, $n \geq 0$, be a monotonic function such as $\lim_{n \xrightarrow{} \infty}\gtfVar(n) = \infty$.
+	\begin{definition}
+		A subset $\aasVar$ is called recurrent if for any $x \in \assVar$
+		\begin{gather*}
+		\Pb(\astVar_{\aasVar} < \infty \: | \: X_{0} = x) = 1.
+		\end{gather*}
+	\end{definition}
+	\begin{definition}
+		A subset $\aasVar \in \asaVar$ is called $\gtfVar$-recurrent if for any $x \in \assVar$
+		\begin{gather}
+		\E\{\gtfVar(\astVar_{\aasVar}) \: | \: X_{0} = x\} < \infty.
+		\end{gather}
+	\end{definition}
+	If $\gtfVar(x) \equiv x$ then the subset $\aasVar$ is said to be (positive) recurrent.
+	
+	Recall the notation
+	\begin{gather}
+	\E{}_{x}\{\cdot\} := \E\{\cdot \: | \: X_{0} = x\}.
+	\end{gather}
+	
+	\begin{theorem*}
+		In order for the inequality $\E{}_{x}\gtfVar(\astVar_{\aasVar}) < \infty$ to hold for any $x \in \assVar$, it is necessary and sufficient that there exists a function $\wtfVar(x, n)$, $x \in \assVar$, $n \geq 0$, which satisfies the conditions:
+		\begin{enumerate}
+			\item[(a)] $\underset{x}{\inf}\wtfVar(x, n) \geq \gtfVar(n)$;
+			\item[(b)] $\atoVar\wtfVar(x, n) := \int_{\assVar}\Pb(x, dx)\wtfVar(y, n+1) - \wtfVar(x, n) \leq 0$, $x \notin \aasVar$, $n \geq 0$;
+			\item[(c)] $\atoVar\wtfVar(x, 0) < \infty$, $x \in \aasVar$.
+		\end{enumerate}
+		Under these conditions the following inequality is valid:
+		\begin{gather}
+		\E{}_{x}\gtfVar(\astVar_{\aasVar}) \leq \begin{cases}
+		\wtfVar(x, 0), & x \notin \aasVar \\
+		\wtfVar(x, 0) + \atoVar\wtfVar(x, 0), & x \in \aasVar
+		\end{cases}
+		\label{main_G_W_inequality}
+		\end{gather}
+	\end{theorem*}
+	
+	\begin{proof}
+		Consider a new Markov chain $\{Y_{n}\}_{n \geq 0}$, where
+		\begin{gather*}
+		Y_{n} = (X_{n}, n), n \geq 0.
+		\end{gather*}
+		Thus, the state space of this "expanded" chain is $\assVar \times \integers_{+}$ and its transition function is
+		\begin{gather*}
+		\Pb(Y_{n+1} = (X_{n+1}, n+1), X_{n+1} \in B \: | \: X_{n}, n) = \Pb(X_{n} \: | \: B),
+		\end{gather*}
+		so the second component of $Y_{n}$ each time has an increment 1. Note that the r.v. $\astVar_{\aasVar}$ is a stopping time not only for $\{X_{n}\}$ but also for $\{Y_{n}\}$ either. The generating operator $\atoVar$ for $\{Y_{n}\}$ operates on functions defined on $\assVar \times \integers_{+}$ and the result of this is shown in the condition (b) of the Theorem.
+		
+		Let \wtfVar satisfy the conditions (a) - (c) of the Theorem and take the stopping time $\astVar_{n} = \min(n, \astVar_{\aasVar})$. Then, by Theorem 1.1 (Kalashnikov's book), we have
+		\begin{gather}
+		\E{}_{x}\gtfVar(\astVar_{n}) \leq \text{(by (a))} \leq \E{}_{(x, 0)}\wtfVar(X_{\astVar_{n}}, \astVar_{n}) \notag \\ = \wtfVar(x, 0) + \E{}_{(x, 0)}\sum_{k < \astVar_{n}}\atoVar\wtfVar(X_{k}, k).
+		\label{expectation_Gtau_estimation}
+		\end{gather}
+		If $x \notin \aasVar$, then $X_{k} \notin \aasVar$ for all $k < \astVar_{n}$, and the condition (b) implies, that the second summand on the right-hand side of (\ref{expectation_Gtau_estimation}) is nonpositive. Thus,
+		\begin{gather*}
+		\E{}_{x}\gtfVar(\astVar_{n}) \leq \wtfVar(x, 0).
+		\end{gather*}
+		Letting $n \xrightarrow{} \infty$ we obtain the first line in (\ref{main_G_W_inequality}).
+		
+		If $x \in \aasVar$, then only the term $\atoVar\wtfVar(X_{0}, 0) = \atoVar\wtfVar(x, 0)$ (which is finite by (c)) on the right-hand side of (\ref{expectation_Gtau_estimation}) may be positive. It follows (letting again $n \xrightarrow{} \infty$) the second line in (\ref{main_G_W_inequality}).
+		
+		Now let us suppose that $\E{}_{x}\gtfVar(\astVar_{n}) < \infty$ for each $x \in \assVar$. Fix $n \geq 0$. Then, by the Markov property of the chain X, we have for any $x \in \assVar$
+		\begin{gather}
+		\E{}_{x}\gtfVar(n + \astVar_{\aasVar}) = \int_{\assVar\backslash\aasVar}\Pb(x, dz)\E{}_{x}\gtfVar(n + \astVar_{\aasVar} + 1) + \Pb(x, \aasVar)\gtfVar(n+1).
+		\label{markov_property_for_expectation}
+		\end{gather}
+		Now let us take the function $\wtfVar : \assVar \times \integers_{+} \xrightarrow{} \reals^{1}$ of the form
+		\begin{gather}
+		\wtfVar(x, n) = \begin{cases}
+		\E{}_{x}\gtfVar(n + \astVar_{\aasVar}), & x \notin Q,\\
+		\gtfVar(n), & x \in \aasVar;
+		\end{cases}
+		\label{W_assumption}
+		\end{gather}
+		It is evident that (a) holds. The relation (\ref{markov_property_for_expectation}) can be rewritten for $x \notin \aasVar$ in the following way (using (\ref{W_assumption})):
+		\begin{gather*}
+		\wtfVar(x, n) = \int_{\assVar}\Pb(x, dz)\E{}_{z}\gtfVar(n + \astVar_{\aasVar} + 1),
+		\end{gather*}
+		which means that (b) is true for the function (\ref{W_assumption}). For $x \in \aasVar$ and $n = 0$, we have from (\ref{markov_property_for_expectation}). For $x \in \aasVar$ and $n = 0$, we have from (\ref{markov_property_for_expectation})
+		\begin{gather*}
+		\E{}_{x}\gtfVar(\astVar_{\aasVar}) = \int_{\assVar \backslash \aasVar}\Pb(x, dz)\E{}_{x}\gtfVar(1 + \astVar_{\aasVar}) + \Pb(x, \aasVar)\gtfVar(1) \\ \equiv \atoVar\wtfVar(x, 0) + \wtfVar(x, 0) = \atoVar\wtfVar(x, 0) + \gtfVar(0),
+		\end{gather*}
+		and so, $\atoVar\wtfVar(x, 0) = \E{}_{x}\gtfVar(\astVar_{\aasVar}) - \gtfVar(0) < \infty$, i.e. (c) holds too.
+	\end{proof}
+	
+	\newpage
+	
+	\section{Generalised Foster's criterion}
+	\newcommand{\hffVar}{h} % h theorem function
+	\newcommand{\gffVar}{g} % h theorem function
+	\newcommand{\cefVar}{\mathcal{E}} % h theorem function
+	\newcommand{\indicator}{\mathds{1}} % h theorem function
+	
+	Let us assume that
+	\begin{enumerate}
+		\item[(L1)] $\hffVar$ is bounded below: $\inf_{x \in \assVar}\hffVar(x) > 0$;
+		\item[(L2)] $\hffVar$ is eventually positive: $\liminf_{\ltfVar \xrightarrow{} \infty}\hffVar(x) > 0$;
+		\item[(L3)] $\gffVar$ is locally bounded above: $\sup_{\ltfVar \leq N}\gffVar(x) < \infty$, for all $N > 0$;
+		\item[(L4)] $\gffVar$ is eventually bounded by $\hffVar$: $\limsup\gffVar(x)/\hffVar(x) < \infty$.
+	\end{enumerate}
+	For a measurable set $\aasVar \subseteq \assVar$ define $\astVar_{\aasVar} = \inf\{n > 0 \: : \: X_{n} \in \aasVar\}$ to be the first return time to $\aasVar$. 
+	\begin{definition}
+		A subset $\aasVar$ is called recurrent if for any $x \in \aasVar$
+		\begin{gather*}
+		\Pb(\astVar_{\aasVar} < \infty \: | \: X_{0} = x) = 1.
+		\end{gather*}
+	\end{definition}
+	\begin{definition}
+		A subset $\aasVar \in \asaVar$ is called positive-recurrent if
+		\begin{gather}
+		\sup_{x \in \aasVar}\E\{\astVar_{\aasVar} \: | \: X_{0} = x\} < \infty.
+		\end{gather}
+	\end{definition}
+	It is this last property that is determined by a suitably designed Lyapunov function. This is the content of Theorem 1 below. That this property can be translated into a stability statement is the subject of later sections.
+	\begin{theorem*}
+		Suppose that the drift of the function $\ltfVar$ in $\gffVar(x)$ steps satisfies the "drift condition"
+		\begin{gather*}
+		\E{}_{x}\left[\ltfVar(X_{\gffVar(x)}) - \ltfVar(X_{0})\right] \leq -\hffVar(x),
+		\end{gather*}
+		where $\ltfVar, \gffVar, \hffVar$ satisfy (L1) - (L4). Let
+		\begin{gather*}
+		\astVar \equiv \astVar_{N} = \inf\{n > 0 \: :  \: \ltfVar(X_{n}) \leq N\}.
+		\end{gather*}
+		Then there exists $N_{0} > 0$, such that for all $N > N_{0}$ and any $x \in \assVar$, we have $\E{}_{x}\astVar < \infty$. Also, $\sup_{\ltfVar(x) \leq N}\E_{x}\astVar < \infty$.
+	\end{theorem*}
+	\begin{proof}
+		From the drift condition, we obviously have that $\ltfVar(x) - \hffVar(x) \geq 0$ for all $x$. We choose $N_{0}$ such that $\inf_{\ltfVar(x) > N_{0}}\hffVar(x) > 0$ and $\sup_{\ltfVar(x) > N_{0}}\gffVar(x)/\hffVar(x) < \infty$. Then, for $N \geq N_{0}$, $\hffVar(x)$ strictly positive, and we set
+		\begin{gather*}
+		d = \sup_{\ltfVar(x) > N}\gffVar(x)/\hffVar(x).
+		\end{gather*}
+		Then $0 < d < \infty$ as follows from (L2) and (L4). We also let
+		\begin{gather*}
+		-H = \inf_{x \in \assVar}\hffVar(x)
+		\end{gather*}
+		and $H < \infty$, from (L1). We define an increasing sequence $t_{n}$ of stopping times recursively by
+		\begin{gather*}
+		t_{0} = 0, \: t_{n} = t_{n-1} + \gffVar(X_{t_{n-1}}), \: n \geq 1.
+		\end{gather*}
+		By the strong Markov property, the variables
+		\begin{gather*}
+		Y_{n} = X_{t_{n}}
+		\end{gather*}
+		form a Markov chain with, as easily proved by induction on $n$, $\E{}_{x}\ltfVar(Y_{n+1}) \leq \E{}_{x}\ltfVar(Y_{n}) + H$, and so $\E{}_{x}\ltfVar(Y_{n}) < \infty$ for all $n$ and $x$. Define the stopping time
+		\begin{gather*}
+		\gamma = \inf\{n \geq 1 \: : \: \ltfVar(Y_{n}) \leq N\} < \infty.
+		\end{gather*}
+		Observe that
+		\begin{gather*}
+		\astVar \leq t_{\gamma}, a.s.
+		\end{gather*}
+		Let $\asaVar_{n}$ be the sigma field generated by $Y_{0},..., Y_{n}$. We define the "cumulative energy"$ $ between 0 and $\gamma \wedge n$ by
+		\begin{gather*}
+		\cefVar_{n} = \sum_{i=0}^{\gamma \wedge n}\ltfVar(Y_{i}) = \sum_{i=0}^{n}\ltfVar(Y_{i})\indicator(\gamma \geq i)
+		\end{gather*}
+		and estimate the drift $\E{}_{x}(\cefVar_{n} - \cefVar_{0})$ (which is finite) in a "martingale fashion":
+		\begin{gather*}
+		\E{}_{x}(\cefVar_{n} - \cefVar_{0}) = \E{}_{x}\sum_{i=1}^{n}\E{}_{x}(\ltfVar(Y_{i})\indicator\left(\gamma \geq i) \: | \: \asaVar_{i-1}\right) \\= \E{}_{x}\sum_{i=1}^{n}\indicator(\gamma \geq i)\E{}_{x}\left(\ltfVar(Y_{i}) \: | \: \asaVar_{i-1}\right) \\ \leq \E{}_{x}\sum_{i=1}^{n}\indicator(\gamma \geq i)\E{}_{x}\left(\ltfVar(Y_{i-1}) - \hffVar(Y_{i-1}) \: | \: \asaVar_{i-1}\right) \\ \leq \E{}_{x}\sum_{i=1}^{n}\indicator(\gamma \geq i)\E{}_{x}\left(\ltfVar(Y_{i-1}) \: | \: \asaVar_{i-1}\right) -\E{}_{x}\sum_{i=1}^{n}\indicator(\gamma \geq i)\hffVar(Y_{i-1}) \\ = \E{}_{x}\cefVar_{n} - \E{}_{x}\sum_{i=1}^{n}\indicator(\gamma \geq i)\hffVar(Y_{i-1}),
+		\end{gather*}
+		where we used that $\ltfVar(x) - \hffVar(x) \geq 0$ and, for the last inequality, we also used $\indicator(\gamma \geq i) \leq \indicator(\gamma \geq i - 1)$ and replaced $n$ by $n+1$. From this we obtain
+		\begin{gather}
+		\E{}_{x}\sum_{i=0}^{n}\hffVar(Y_{i})\indicator(\gamma \geq i) \leq \E{}_{x}\ltfVar(X_{0}) = \ltfVar(x).
+		\label{cumulative_estimation_by_V}
+		\end{gather}
+		Assume $\ltfVar(x) > N$. Then $\ltfVar(Y_{i}) > N$ for $i < \gamma$, by the definition of $\gamma$, and so
+		\begin{gather}
+		\hffVar(Y_{i}) \geq d^{-1}\gffVar(Y_{i}) > 0 \text{ for } i < \gamma
+		\label{h_g_connection}
+		\end{gather}
+		by the definition of d. Also,
+		\begin{gather}
+		\hffVar(Y_{i}) \geq -H, \text{ for all } i.
+		\label{h_estimation}
+		\end{gather}
+		by the definition of H. Using (\ref{h_g_connection}) and (\ref{h_g_connection}) in (\ref{cumulative_estimation_by_V}) we obtain:
+		\begin{gather*}
+		\ltfVar(x) \geq \E{}_{x}\sum_{i=0}^{n}\hffVar(Y_{i})\indicator(\gamma > i) + \E{}_{x}\sum_{i=0}^{n}\hffVar(Y_{i})\indicator(\gamma = i) \\ \geq d^{-1}\E{}_{x}\sum_{i=0}^{(\gamma - 1) \wedge n}\gffVar(Y_{i}).
+		\end{gather*}
+		Recall that $\gffVar(Y_{0}) + ... + \gffVar(Y_{k}) = t_{k+1}$, and so the above gives:
+		\begin{gather*}
+		\ltfVar(x) \geq d^{-1}\E{}_{x}t_{\gamma \wedge n}.
+		\end{gather*}
+		Now take limits as $n \xrightarrow{} \infty$ (both relevant sequences are increasing in n) and obtain that
+		\begin{gather*}
+		\E{}_{x}t_{\gamma \wedge n} \leq d\ltfVar(x).
+		\end{gather*}
+		It remains to see what happens if $\ltfVar(x) \leq N$. By conditioning on $Y_{1}$, we have
+		\begin{gather*}
+		\E{}_{x}\astVar \leq \gtfVar(x) + \E{}_{x}\left(\E{}_{Y_{1}}\astVar\indicator(\ltfVar(Y_{1}) > N)\right) \\ \leq \gffVar(x) + \E{}_{x}\left(d^{-1}\ltfVar(Y_{1})\indicator(\ltfVar(Y_{1}) > N)\right) \\ \leq \gffVar(x) + dH + d\ltfVar(x).
+		\end{gather*}
+		Hence,
+		\begin{gather*}
+		\sup_{\ltfVar(x) \leq N}\E{}_{x}\astVar \leq \sup_{\ltfVar(x) \leq N}\gffVar(x) + d(H +N),
+		\end{gather*}
+		where the latter is a finite constant, by assumption (L3).
+	\end{proof}
+	
+	
+	\section{Multistep Kalashikov's theorem}
+	Let $\{X_{n}\}_{n \geq 0}$ be a time-homogeneous Markov chain on a state space $\assVar$. Let us define an operator $\atoVar$, which operates on the function $\ltfVar(x)$, $x \in \assVar$, in terms of the equality
+	\begin{gather}
+	\atoVar\ltfVar(x) = \E{}_{x}\ltfVar(X_{1}) - \ltfVar(x).
+	\label{A_operator_definition}
+	\end{gather}
+	If the right-hand side of the equation (\ref{A_operator_definition}) is finite at point $x$, then we say that the function $\ltfVar$ belongs to the domain of definition of the operator $\atoVar$ at point $x$, and we shall designate this fact as $\ltfVar \in \akdVar(x)$. If $\ltfVar \in \akdVar(x)$ for all $x \in \assVar$, then we will write that $\ltfVar \in \akdVar$.
+	
+	Let $\aasVar \in \asaVar$, $\astVar_{\aasVar} = \min\{n : n > 0, X_{n} \in \aasVar\}$, and $\gtfVar(n) \geq 0$, $n \geq 0$, be a monotonic function such as $\lim_{n \xrightarrow{} \infty}\gtfVar(n) = \infty$.
+	\begin{definition}
+		A subset $\aasVar$ is called recurrent if for any $x \in \assVar$
+		\begin{gather*}
+		\Pb(\astVar_{\aasVar} < \infty \: | \: X_{0} = x) = 1.
+		\end{gather*}
+	\end{definition}
+	\begin{definition}
+		A subset $\aasVar \in \asaVar$ is called $\gtfVar$-recurrent if for any $x \in \assVar$
+		\begin{gather}
+		\E\{\gtfVar(\astVar_{\aasVar}) \: | \: X_{0} = x\} < \infty.
+		\end{gather}
+	\end{definition}
+	If $\gtfVar(x) \equiv x$ then the subset $\aasVar$ is said to be (positive) recurrent. Recall the notation
+	\begin{gather}
+	\E{}_{x}\{\cdot\} := \E\{\cdot \: | \: X_{0} = x\}.
+	\end{gather}
+	\begin{repeated_theorem}
+		For the expectation $\E{}_{x}\gtfVar(\astVar_{\aasVar}) < \infty$ to be finite for any $x \in \assVar$, it is necessary and sufficient that there exists functions $\gffVar:\assVar \xrightarrow{} \integers_{+}$ and $\wtfVar(x, n)$, $x \in \assVar$, $n \geq 0$, which satisfy the following conditions:
+		\begin{enumerate}
+			\item[(a)] $\underset{x}{\inf}\wtfVar(x, n) \geq \gtfVar(n)$;
+			\item[(b)] $\atoVar_{\gffVar}\wtfVar(x, n) := \E{}_{x}\wtfVar(X_{\gffVar(x)}, n+\gffVar(x)) - \wtfVar(x, n) \leq 0$, $x \notin \aasVar$, $n \geq 0$;
+			\item[(c)] $\atoVar_{\gffVar}\wtfVar(x, 0) < \infty$, $x \in \aasVar$.
+		\end{enumerate}
+		Also the following estimation is valid:
+		\begin{gather}
+		\E{}_{x}\gtfVar(\astVar_{\aasVar}) \leq \begin{cases}
+		\wtfVar(x, 0), & x \notin \aasVar \\
+		\wtfVar(x, 0) + \atoVar_{\gffVar}\wtfVar(x, 0), & x \in \aasVar
+		\end{cases}
+		\label{main_G_W_inequality}
+		\end{gather}
+		\label{generalized_kalashnikov_theorem}
+	\end{repeated_theorem}
+	\begin{proof}
+		We define an increasing sequence $t_{n}$ of stopping times recursively by
+		\begin{gather*}
+		t_{0} = 0, \: t_{n} = t_{n-1} + \gffVar(X_{t_{n-1}}), \: n \geq 1.
+		\end{gather*}
+		By the strong Markov property, the variables
+		\begin{gather*}
+		Y_{n} = X_{t_{n}}
+		\end{gather*}
+		form a Markov chain. One can notice, that $\{Y_{n}\}_{n \geq 0}$ form time-homogeneous Markov chain. Indeed, for any $D \in \asaVar$ and $y \in \assVar$, we have
+		\begin{gather*}
+		\Pb\left(Y_{n} \in D \: | \: Y_{n-1} = y\right) = \Pb\left(X_{t_{n-1} + \gffVar(X_{t_{n-1}})} \in D \: | \: X_{t_{n-1}} = y\right) \\ = \Pb\left(X_{t_{n-1} + \gffVar(y)} \in D \: | \: X_{t_{n-1}} = y\right) = \Pb{}^{\gffVar(y)}\left(D, y\right).
+		\end{gather*}
+		Define the stopping time
+		\begin{gather*}
+		\gamma = \inf\{n \geq 1 \: : \: Y_{n} \in \aasVar\} < \infty.
+		\end{gather*}
+		Observe that
+		\begin{gather*}
+		\astVar_{\aasVar} \leq t_{\gamma}, a.s.
+		\end{gather*}
+		Consider a new Markov chain $\{Z_{n}\}_{n \geq 0}$, where
+		\begin{gather*}
+		Z_{n} = (Y_{n}, t_{n}), n \geq 0.
+		\end{gather*}
+		Thus, the state space of this "expanded"$ $ chain is $\assVar \times \integers_{+}$ and its transition function is
+		\begin{gather*}
+		\Pb(Z_{n+1} = (Y_{n+1}, t_{n}+\gffVar(Y_{n})), Y_{n+1} \in B \: | \: Y_{n}, t_{n}) = \Pb(Y_{n+1} \in B \: | \: Y_{n}),
+		\end{gather*}
+		so the second component of $Z_{n}$ each time has an increment $g(Y_{n})$. Note that the r.v. $\gamma$ is a stopping time not only for $\{Y_{n}\}$ but also for $\{Z_{n}\}$ either. The operator $\atoVar$ for $\{Z_{n}\}$ operates on functions defined on $\assVar \times \integers_{+}$ and the result of this is as follows:
+		\begin{gather*}
+		\atoVar\wtfVar(x, n) = \E{}_{x}\wtfVar(Y_{1}, n+\gffVar(x)) - \wtfVar(x, n).
+		\end{gather*}
+		Let $\wtfVar$ satisfy the conditions (a) - (c) of the Theorem and take the stopping times $\gamma_{n} = \min(n, \gamma)$ and $\astVar_{n} = \min(n, \astVar_{\aasVar})$. Then, by Theorem 1.1 (chapter 5, \cite{Kalashnikov}), we have
+		\begin{gather}
+		\E{}_{x}\gtfVar(\astVar_{n}) \leq \E{}_{x}\gtfVar(t_{\gamma_{n}}) \leq \text{(by (a))} \leq \E{}_{(x, 0)}\wtfVar(Y_{\gamma_{n}}, t_{\gamma_{n}}) \notag \notag\\ = \wtfVar(x, 0) + \E{}_{(x, 0)}\sum_{k < \gamma_{n}}\atoVar\wtfVar(Y_{k}, t_{k}) \notag\\ = \wtfVar(x, 0) + \E{}_{(x, 0)}\sum_{k < \gamma_{n}}\left[\E{}_{(Y_{k}, t_{k})}\wtfVar(Y_{k+1}, t_{k}+\gffVar(Y_{k})) - \wtfVar(Y_{k}, t_{k})\right].
+		\label{expectation_Gtau_estimation}
+		\end{gather}
+		If $x \notin \aasVar$, then $Y_{k} \notin \aasVar$ for all $k < \astVar_{n}$, and the condition (b), given that the Markov chain $Y_{k}$ is time-homogeneous, implies, that the second summand on the right-hand side of (\ref{expectation_Gtau_estimation}) is nonpositive. Thus,
+		\begin{gather*}
+		\E{}_{x}\gtfVar(\astVar_{n}) \leq \E{}_{x}\gtfVar(t_{\gamma_{n}}) \leq \wtfVar(x, 0).
+		\end{gather*}
+		Letting $n \xrightarrow{} \infty$ we obtain the first line in (\ref{main_G_W_inequality}).
+		
+		If $x \in \aasVar$, then only the term $\atoVar\wtfVar(Y_{0}, 0) = \atoVar\wtfVar(x, 0)$ (which is finite by (c)) on the right-hand side of (\ref{expectation_Gtau_estimation}) may be positive. It follows (letting again $n \xrightarrow{} \infty$) the second line in (\ref{main_G_W_inequality}).
+		
+		Now let us suppose that $\E{}_{x}\gtfVar(\astVar_{n}) < \infty$ for each $x \in \assVar$. For the completeness of the proof we will repeat the arguments from the book by V.V. Kalashnikov (chapter 5.2, Theorem 1, \cite{Kalashnikov}). We will further assume that the function $\gffVar$ is in the form of $\gffVar(x) = 1$ for any $x \in \assVar$.
+		
+		Fix $n \geq 0$. Then, by the Markov property of the chain X, we have for any $x \in \assVar$
+		\begin{gather}
+		\E{}_{x}\gtfVar(n + \astVar_{\aasVar}) = \int_{\assVar\backslash\aasVar}\Pb(x, dz)\E{}_{x}\gtfVar(n + \astVar_{\aasVar} + 1) + \Pb(x, \aasVar)\gtfVar(n+1).
+		\label{markov_property_for_expectation}
+		\end{gather}
+		Now let us take the function $\wtfVar : \assVar \times \integers_{+} \xrightarrow{} \reals^{1}$ of the form
+		\begin{gather}
+		\wtfVar(x, n) = \begin{cases}
+		\E{}_{x}\gtfVar(n + \astVar_{\aasVar}), & x \notin Q,\\
+		\gtfVar(n), & x \in \aasVar;
+		\end{cases}
+		\label{W_assumption}
+		\end{gather}
+		It is evident that (a) holds. The relation (\ref{markov_property_for_expectation}) can be rewritten for $x \notin \aasVar$ in the following way (using (\ref{W_assumption})):
+		\begin{gather*}
+		\wtfVar(x, n) = \int_{\assVar}\Pb(x, dz)\E{}_{z}\gtfVar(n + \astVar_{\aasVar} + 1),
+		\end{gather*}
+		which means that (b) is true for the function (\ref{W_assumption}). For $x \in \aasVar$ and $n = 0$, we have from (\ref{markov_property_for_expectation}). For $x \in \aasVar$ and $n = 0$, we have from (\ref{markov_property_for_expectation})
+		\begin{gather*}
+		\E{}_{x}\gtfVar(\astVar_{\aasVar}) = \int_{\assVar \backslash \aasVar}\Pb(x, dz)\E{}_{x}\gtfVar(1 + \astVar_{\aasVar}) + \Pb(x, \aasVar)\gtfVar(1) \\ \equiv \atoVar_{1}\wtfVar(x, 0) + \wtfVar(x, 0) = \atoVar_{1}\wtfVar(x, 0) + \gtfVar(0),
+		\end{gather*}
+		and so, $\atoVar_{1}\wtfVar(x, 0) = \E{}_{x}\gtfVar(\astVar_{\aasVar}) - \gtfVar(0) < \infty$, i.e. (c) holds too.
+	\end{proof}
+	
+	Although the assertion of Theorem \ref{generalized_kalashnikov_theorem} contains the necessary and sufficient conditions for the finiteness of the quantity $\E{}_{x}\gtfVar(\astVar_{\aasVar})$, they are not very convenient to be applied, being formulated in terms of the "expanded"$ $ process $(X_{n}, n)$. However, using Theorem \ref{generalized_kalashnikov_theorem}, we can obtain convenient conditions of $\gtfVar$-recurrency in terms of the original process $X$ as well.
+	
+	We will further assume that the function $\gffVar$ is bounded, i.e. there exists a constant $C$ such that
+	\begin{gather}
+	\gffVar(x) \leq C < \infty \text{ for each } x \in \assVar.
+	\label{g_assumption}
+	\end{gather}
+	
+	\begin{repeated_corollary}
+		For the expectation $\E{}_{x}\astVar_{\aasVar}$ to be finite for any $x \in \assVar$, it is necessary and sufficient that there exists a function $\gffVar:\assVar \xrightarrow{} \integers_{+}$, a function $\ltfVar(x) \geq 0$, $x \in \assVar$, and a constant $\Delta > 0$ such that:
+		\begin{enumerate}
+			\item[(a)] $\atoVar_{\gffVar}\ltfVar(x) \leq -\Delta$, $x \notin \aasVar$,
+			\item[(b)] $\atoVar_{\gffVar}\ltfVar(x) < \infty$, $x \in \aasVar$.
+		\end{enumerate}
+		Then the expectation $\E{}_{x}\astVar_{\aasVar}$ is finite for any $x \in \assVar$. Also, the following bound holds:
+		\begin{align}
+		\E{}_{x}\astVar_{\aasVar} \leq \begin{cases}
+		\frac{C\ltfVar(x)}{\Delta}, & x \notin \aasVar, \\
+		1 + \frac{C}{\Delta}\left(\ltfVar(x) + \atoVar_{\gffVar}\ltfVar(x)\right), & x \in \aasVar
+		\end{cases}
+		\label{corollary_1_bound}
+		\end{align}
+	\end{repeated_corollary}
+	\begin{proof}
+		Let functions $\gffVar$, $\ltfVar$ and a constant $\Delta > 0$ satisfy the conditions (a), (b). We prove the sufficiency of the conditions (a), (b) by applying Theorem (\ref{generalized_kalashnikov_theorem}). Consider the function $\wtfVar(x, n) = n + C\ltfVar(x) / \Delta$, where $C$ is a constant defined in the assumption (\ref{g_assumption}). Given that $\ltfVar(x) \geq 0$ and $\gtfVar(n) = n$ it is evident that (a) from Theorem (\ref{generalized_kalashnikov_theorem}) holds. Using condition (b) we have
+		\begin{gather*}
+		\atoVar_{\gffVar}\wtfVar(x, n) = n + \gffVar(x) + \E{}_{x}\frac{C\ltfVar(X_{g(x)})}{\Delta} - n - \frac{C\ltfVar(x)}{\Delta} \\ = \gffVar(x) + \frac{C}{\Delta}\atoVar_{\gffVar}\ltfVar(x) \leq \gffVar(x) - C \leq 0,
+		\end{gather*}
+		which proves (b) from Theorem (\ref{generalized_kalashnikov_theorem}). Condition (c) is a direct corollary of the condition (b). The bound (\ref{corollary_1_bound}) follows from the bound (\ref{main_G_W_inequality}).
+		
+		To prove the necessity it is enough to consider the function $\gffVar(x) = 1$ and the test function $\ltfVar$ in the form
+		\begin{gather*}
+		\ltfVar(x) = \begin{cases}
+		\E{}_{x}\astVar_{\aasVar}, & x \notin \aasVar,\\
+		0, & x \in \aasVar,
+		\end{cases}
+		\end{gather*}
+		and put it into conditions (a) and (b).
+	\end{proof}
+	
+	\begin{repeated_corollary}
+		For the expectation $\E{}_{x}\exp(\mu\astVar_{\aasVar})$, $\mu > 0$, to be finite for any $x \in \assVar$, it is necessary and sufficient that there exists a function $\gffVar:\assVar \xrightarrow{} \integers_{+}$, a test function $\ltfVar(x) \geq 1$, $x \in \assVar$ and a constant $\Delta > 0$ such that:
+		\begin{enumerate}
+			\item[(a)] $\atoVar_{\gffVar}\ltfVar(x) \leq -(1 - e^{-\mu C})\ltfVar(x)$, $x \notin \aasVar$,
+			\item[(b)] $\atoVar_{\gffVar}\ltfVar(x) < \infty$, $x \in \aasVar$.
+		\end{enumerate}
+		Here, the following bound holds:
+		\begin{align}
+		\E{}_{x}\exp(\mu\astVar_{\aasVar}) \leq \begin{cases}
+		\ltfVar(x), & x \notin \aasVar, \\
+		e^{\mu}(\ltfVar(x) + \atoVar_{\gffVar}\ltfVar(x)), & x \in \aasVar
+		\end{cases}
+		\label{corollary_2_bound}
+		\end{align}
+	\end{repeated_corollary}
+	
+	\begin{proof}
+		Let functions $\gffVar$, $\ltfVar$ and a constant $\mu > 0$ satisfy the conditions (a), (b). Consider the function $\wtfVar(x, n) = e^{\mu n}\ltfVar(x)$. Given that $\ltfVar(x) \geq 1$ and $\gtfVar(n) = \exp(\mu n)$ it is evident that (a) holds. Using condition (b) we have
+		\begin{gather*}
+		\atoVar_{\gffVar}\wtfVar(x, n) = \E{}_{x}e^{\mu(n + g(x))}\ltfVar(X_{\gffVar(x)}) - e^{\mu n}\ltfVar(x) \\ = e^{\mu(n + \gffVar(x))}\atoVar_{\gffVar}\ltfVar(x) + e^{\mu n}(e^{\mu\gffVar(x)} - 1)\ltfVar(x) \\ \leq -e^{\mu(n + \gffVar(x))}(1 - e^{-\mu C})\ltfVar(x) + e^{\mu n}\ltfVar(x)(e^{\mu\gffVar(x)} - 1) \\ = (-e^{\mu(n + \gffVar(x))}(1 - e^{-\mu C}) + e^{\mu n}(e^{\mu \gffVar(x)} - 1))\ltfVar(x) \\ = (e^{\mu(n + \gffVar(x)) - \mu C} - e^{\mu n})\ltfVar(x) \leq 0,
+		\end{gather*}
+		which proves (b) from Theorem (\ref{generalized_kalashnikov_theorem}). Condition (c) is a direct corollary of the condition (b). The bound (\ref{corollary_2_bound}) follows from the bound (\ref{main_G_W_inequality}).
+		
+		To prove the necessity it is enough to consider the function $\gffVar(x) = 1$ and the test function $\ltfVar$ in the form
+		\begin{gather*}
+		\ltfVar(x) = \begin{cases}
+		\E{}_{x}\exp(\mu\astVar_{\aasVar}), & x \notin \aasVar,\\
+		0, & x \in \aasVar,
+		\end{cases}
+		\end{gather*}
+		and put it into conditions (a) and (b).
+	\end{proof}
+	
+	Let us designate as $\Delta\ltfVar(x)$ the drift $\ltfVar(X_{n + \gffVar(X_{n})}) - \ltfVar(X_{n})$ of a function $\ltfVar$ defined on the space $\assVar$, provided that $X_{n} = x$. The following theorem contains only sufficient conditions of the existence of a power moment for the passage time.
+	
+	\begin{repeated_theorem}
+		Let there exist a function $\gffVar:\assVar \xrightarrow{} \integers_{+}$, a nonnegative function $\ltfVar(x)$, $x \in \assVar$, and positive numbers $\Delta$, $b$ and $s > 1$, and let the r.v. $\Delta(x)$ be defined for every $x \in \assVar$; for the objects indicated, the following relations are fulfilled:
+		\begin{enumerate}
+			\item[(a)] $\sup_{x \in \aasVar}\ltfVar(x) = v_{\aasVar} < \infty$;
+			\item[(b)] $\Pb(\Delta_{\gffVar}\ltfVar(x) \leq \Delta(x)) = 1$, $\forall x \in \assVar$;
+			\item[(c)] $\sup_{x \notin \aasVar}\E\Delta(x) \leq -\Delta < 0$;
+			\item[(d)] $\sup_{x \in \assVar}\E\absolute{\Delta(x)}^{s} \leq b < \infty$.
+		\end{enumerate}
+		Then
+		\begin{align}
+		\E{}_{x}\astVar_{\aasVar}^{s} \leq \begin{cases}
+		\left(\alpha + \frac{2\ltfVar(x)}{\Delta}\right)^{s}, & x \notin \aasVar,\\
+		c(\Delta, b, s, v_{\aasVar}), & x \in \aasVar,
+		\end{cases}
+		\label{exponential_moment_result_estimation}
+		\end{align}
+		where the quantities $\alpha$ and $c = c(\Delta, b, s, v_{\aasVar})$ are defined by either equations (\ref{exponential_moment_second_eq}) and (\ref{exponential_moment_third_eq}) (for $s \leq 2$) or (\ref{exponential_moment_alpha}) and (\ref{exponential_moment_c}) (for $s > 2$) which follow.
+		\label{Exponential_moment_theorem}
+	\end{repeated_theorem}
+	
+	\begin{proof}
+		Use the assertion of Theorem \ref{generalized_kalashnikov_theorem} for proof. Let us define the test function $\wtfVar(x, n) = (\alpha + n + 2C\ltfVar(x) / \Delta)^{s} \geq n^{s}$, where we will select the constant $\alpha > 0$ later on. Then
+		\begin{gather}
+		\atoVar\wtfVar(x, n) = \E{}_{x}\left(\left(\alpha + n + \gffVar(x) + \frac{2C}{\Delta}(\ltfVar(x) + \Delta_{\gffVar}\ltfVar(x))\right)^{s} - \left(\alpha + n + \frac{2C\ltfVar(x)}{\Delta}\right)\right) \notag\\ = \left(\alpha + n + \frac{2C\ltfVar(x)}{\Delta}\right)^{s}\E{}_{x}\left(\left(1 + \frac{\gffVar(x) + \frac{2C}{\Delta}\Delta_{\gffVar}\ltfVar(x)}{\alpha + n + \frac{2C}{\Delta}\ltfVar(x)}\right)^{s} - 1\right).
+		\label{exponential_moment_first_eq}
+		\end{gather}
+		We have in (\ref{exponential_moment_first_eq}) that (since $\ltfVar(x) + \Delta\ltfVar(x) \geq 0$)
+		\begin{gather*}
+		z := \left(\gffVar(x) + \frac{2C}{\Delta}\Delta_{\gffVar}\ltfVar(x)\right)\left(\alpha + n + \frac{2C}{\Delta}\ltfVar(x)\right)^{-1} \geq -1.
+		\end{gather*}
+		Apply, for estimating (\ref{exponential_moment_first_eq}), the inequality
+		\begin{gather}
+		(1 + z)^{s} \leq 1 + sz + \begin{cases}
+		\absolute{z}^{s}, & 1 < s \leq 2,\\
+		s(s-1)z^{2}(1 + \absolute{z}^{s-2})2^{s-3}, & \text{otherwise},
+		\end{cases}
+		\label{exponential_moment_first_ineq}
+		\end{gather}
+		which can be proved easily by using Taylor's expansion. It is valid for $z \geq -1$. Putting (\ref{exponential_moment_first_ineq}) into (\ref{exponential_moment_first_eq}), we get for $1 < s \leq 2$
+		\begin{gather}
+		\E{}_{x}((1 + z)^{s} - 1) \notag\\ \leq \E{}_{x}\left(\left(1 + \frac{\gffVar(x) + \frac{2C}{\Delta}\Delta(x)}{\alpha + n + \frac{2C}{\Delta}\ltfVar(x)}\right)^{s} - 1\right) \notag\\ \leq \E{}_{x}\left(s\frac{\gffVar(x) + \frac{2C}{\Delta}\Delta(x)}{\alpha + n + \frac{2C}{\Delta}\ltfVar(x)} + \absolute{\frac{\gffVar(x) + \frac{2C}{\Delta}\Delta(x)}{\alpha + n + \frac{2C}{\Delta}\ltfVar(x)}}^{s}\right) \notag\\ \leq \left(\alpha + n + \frac{2C}{\Delta}\ltfVar(x)\right)^{-1}\E{}_{x}\left(s\left(\gffVar(x) + \frac{2C}{\Delta}\Delta(x)\right) + \frac{(\gffVar^{s}(x) + \absolute{\frac{2C}{\Delta}\Delta(x)}^{s})2^{s}}{(\alpha + n + \frac{2C}{\Delta}\ltfVar(x))^{s-1}}\right) \notag\\ \leq \left(\alpha + n + \frac{2}{\Delta}\ltfVar(x)\right)^{-1}\left(s(\gffVar(x) - 2C) + 2^{s}\alpha^{1-s}\left(C^{s} + \left(\frac{2C}{\Delta}\right)^{s}b\right)\right).
+		\label{exponential_moment_second_ineq}
+		\end{gather}
+		If we take
+		\begin{gather}
+		\alpha = \left(\frac{2^{s}}{s}\left(C^{s} + \left(\frac{2C}{\Delta}\right)^{s}b\right)\right)^{1 / (s-1)},
+		\label{exponential_moment_second_eq}
+		\end{gather}
+		then the right-hand side of (\ref{exponential_moment_second_ineq}) is nonpositive for $x \notin \aasVar$ and the same is true for (\ref{exponential_moment_first_eq}). Hence, by Theorem \ref{generalized_kalashnikov_theorem}, the estimate (\ref{exponential_moment_result_estimation}) holds for $1 < s \leq 2$ if we take $\alpha$ as in (\ref{exponential_moment_second_eq}) and set
+		\begin{gather}
+		c(\Delta, b, s, v_{\aasVar}) = \left(\alpha + \frac{2Cv_{\aasVar}}{\Delta}\right)^{s} \notag\\ + s\left(\alpha + \frac{2Cv_{\aasVar}}{\Delta}\right)^{s-1}\left(C + \frac{2Cb^{1/s}}{\Delta}\right) + 2^{s}\left(C^{s} + \left(\frac{2C}{\Delta}\right)^{s}b\right),
+		\label{exponential_moment_third_eq}
+		\end{gather}
+		which is more than, or equal to, $\sup_{x \in \aasVar}\left[\wtfVar(x, 0) + \atoVar\wtfVar(x, 0)\right]$ (see (\ref{exponential_moment_first_eq}), (\ref{exponential_moment_second_ineq})), since
+		\begin{gather*}
+		\sup_{x \in \aasVar}\E{}_{x}\Delta(x) \leq \sup_{x \in \aasVar}\E{}_{x}\absolute{\Delta(x)} \leq \sup_{x \in \aasVar}(\E{}_{x}\absolute{\Delta(x)}^{s})^{1/s} \leq b^{1/s}.
+		\end{gather*}
+		Similarly, if we take for $s > 2$
+		\begin{gather*}
+		\alpha = \max\left\{1, \frac{2^{s-3}(s-1)}{C}\left(2^{2}\left(C^{2} + \left(\frac{2C}{\Delta}\right)^{2}b^{2/s}\right) + 2^{s}\left(C^{s} + \left(\frac{2C}{\Delta}\right)^{s}b\right)\right)\right\},
+		\label{exponential_moment_alpha}
+		\end{gather*}
+		then the inequality (\ref{exponential_moment_result_estimation}) holds for
+		\begin{gather}
+		c(\Delta, b, s, v_{\aasVar}) = \left(\alpha + \frac{2Cv_{\aasVar}}{\Delta}\right)^{s} + s\left(\alpha + \frac{2Cv_{\aasVar}}{\Delta}\right)^{s-1}\left(C + \frac{2Cb^{1/s}}{\Delta}\right) \notag\\ + \left(\alpha + \frac{2Cv_{\aasVar}}{\Delta}\right)^{s-2}s(s-1)2^{s-3}\left(2^{2}\left(C^{2} + \left(\frac{2C}{\Delta}\right)^{2}b^{2/s}\right) + 2^{s}\left(C^{s} + \left(\frac{2C}{\Delta}\right)^{s}b\right)\right).
+		\label{exponential_moment_c}
+		\end{gather}
+		This yields the proof.
+	\end{proof}
+	
+	In addition to power and exponential moments we would like to find bounds for G-moments for an arbitrary monotonic function $\gtfVar$, which increases a little bit faster than a linear one. So, let $\gtfVar$ be a non-decreasing function and, besides, let the derivative $\gdfVar(x) = \frac{d\gtfVar(x)}{dx}$ exist for all $x \geq 0$, $\gdfVar(x) \xrightarrow{} \infty$, as $x \xrightarrow{} \infty$ and $\gdfVar(x)$ is a concave function.
+	
+	Considering all conditions on the function $\gdfVar$ one can notice that $\gdfVar$ is non-decreasing. Indeed, if the function $\gdfVar$ is decreasing at the point $x$, then there exists an interval $\{y : y > x\}$ where $\gdfVar$ is not concave, because $\gdfVar(z) \xrightarrow{} \infty$, as $z \xrightarrow{} \infty$.
+	
+	\begin{repeated_theorem}
+		For the mentioned function $\gtfVar$, there exist a function $\gffVar:\assVar \xrightarrow{} \integers_{+}$, a nonnegative function $\ltfVar(x)$, $x \in \assVar$, and positive numbers $\Delta$, $b$ and $s > 1$, and the r.v. $\Delta(x)$ defined for every $x \in \assVar$ such that:
+		\begin{enumerate}
+			\item[(a)] $\sup_{x \in \aasVar}\ltfVar(x) = v_{\aasVar} < \infty$;
+			\item[(b)] $\Pb(\Delta_{\gffVar}\ltfVar(x) \leq \Delta(x)) = 1$, $\forall x \in \assVar$;
+			\item[(c)] $\sup_{x \notin \aasVar}\E\Delta(x) \leq -\Delta < 0$;
+			\item[(d)] $\sup_{x \in \assVar}\E\gtfVar(\absolute{\Delta(x)}) \leq b < \infty$.
+		\end{enumerate}
+		Then
+		\begin{align}
+		\E{}_{x}\astVar_{\aasVar}^{s} \leq \begin{cases}
+		\gtfVar\left(\alpha + \frac{2\ltfVar(x)}{\Delta}\right), & x \notin \aasVar,\\
+		c(\Delta, b, s, v_{\aasVar}), & x \in \aasVar,
+		\end{cases}    \label{G_theorem_result_estimation}
+		\end{align}
+		where the quantities $\alpha$ and $c = c(\Delta, b, s, v_{\aasVar})$ are defined by equations (\ref{G_theorem_b'_constant}), (\ref{G_theorem_alpha_constant}) and (\ref{G_theorem_c_constant}) given below.
+	\end{repeated_theorem}
+	
+	\begin{proof}
+		We will use the same arguments as those from Theorem \ref{Exponential_moment_theorem}. Namely, consider the test function
+		\begin{gather*}
+		\wtfVar(x, n) = \gtfVar\left(\alpha + n + \frac{2\ltfVar(x)}{\Delta}\right)
+		\end{gather*}
+		The following relation is true: if $x \geq 0$ and $y \geq -x$ then
+		\begin{gather*}
+		\gtfVar(x + y) \leq \gdfVar(x) + \gdfVar(x)y + \gdfVar(\absolute{y})
+		\end{gather*}
+		
+		Really, if $y \geq 0$, then
+		\begin{gather*}
+		\gtfVar(x + y) = \gtfVar(x) + \int_{0}^{y}\gdfVar(x + u)du \\ \text{(due to the fact that $\gdfVar$ is a concave function)} \\ \leq \gtfVar(x) + \int_{0}^{y}\absolute{\gdfVar(x) + \gdfVar(u)}du = \gtfVar(x) + \gdfVar(x)y + \gtfVar(y)
+		\end{gather*}
+		If $y < 0$, then
+		\begin{gather*}
+		\gtfVar(x + y) = \gtfVar(x) - \int_{0}^{\absolute{y}}\gdfVar(x - u)du \\ \text{(due to the fact that $\gdfVar$ is a concave function)} \\ \leq \gtfVar(x) - \int_{0}^{\absolute{y}}\absolute{\gdfVar(x) - \gdfVar(u)}du = \gtfVar(x) + \gdfVar(x)y + \gtfVar(\absolute{y})
+		\end{gather*}
+		Similarly to (\ref{exponential_moment_first_eq}) we get
+		\begin{gather*}
+		\atoVar\wtfVar(x, n) \leq \E{}_{x}\left(\gtfVar\left(\alpha + n + \gffVar(x) + \frac{2}{\Delta}\left(\ltfVar(x) + \Delta(x)\right)\right) - \gtfVar\left(\alpha + n + \frac{2\ltfVar(x)}{\Delta}\right)\right) \\ \leq \E{}_{x}\Bigg[\gtfVar\left(\alpha + n + \frac{2\ltfVar(x)}{\Delta}\right) + \gdfVar\left(\alpha + n + \frac{2\ltfVar(x)}{\Delta}\right)\left(\gffVar(x) + \frac{2}{\Delta}\Delta(x)\right) \\ + \gtfVar\left(\gffVar(x) + \frac{2}{\Delta}\absolute{\Delta(x)}\right) - \gtfVar\left(\alpha + n + \frac{2\ltfVar(x)}{\Delta}\right)\Bigg] \\ \leq -\gdfVar(\alpha)\Delta + \E{}_{x}\gtfVar\left(C + \frac{2\absolute{\Delta(x)}}{\Delta}\right).
+		\end{gather*}
+		Denote
+		\begin{gather}
+		b' = \E{}_{x}\gtfVar\left(C + \frac{2\absolute{\Delta(x)}}{\Delta}\right).
+		\label{G_theorem_b'_constant}
+		\end{gather}
+		It is evident from (d) that $b' < \infty$ and one can estimate $b'$ by virtue of b. Choose
+		\begin{gather}
+		\alpha = \gdfVar^{-1}\left(\frac{b'}{\Delta}\right).
+		\label{G_theorem_alpha_constant}
+		\end{gather}
+		Then all the conditions of Theorem \ref{generalized_kalashnikov_theorem} are fulfilled and, hence, (\ref{G_theorem_result_estimation}) is true for
+		\begin{gather}
+		c = b' + \gdfVar\left(\alpha + \frac{2v_{\aasVar}}{\Delta}\right)\left(C + \frac{2\gtfVar^{-1}(b)}{\Delta}\right) + \gtfVar\left(\alpha + \frac{2v_{\aasVar}}{\Delta}\right).
+		\label{G_theorem_c_constant}
+		\end{gather}
+	\end{proof}
+	
+	\begin{thebibliography}{1}
+		\bigskip
+		\footnotesize
+		\bibitem{Kalashnikov}
+		Vladimir V. Kalashnikov (1994). Mathematical methods in queuing theory. - Dordrecht etc. : Kluwer acad. publ., - IX, 377 с. : ил.; 24 см. - (Mathematics and its applications; Vol. 003271).; ISBN 0-7923-2568-0.
+		
+	\end{thebibliography}
+\end{document}
+
+
+
